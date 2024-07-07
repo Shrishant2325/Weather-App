@@ -1,174 +1,202 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    height: 100%;
-  }
-  
-  body {
-    font-family: "Outfit", sans-serif;
-    background-image: url("https://images3.alphacoders.com/109/1091500.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: top center;
-  }
-  
-  .app-wrap {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background-image: url("https://images3.alphacoders.com/109/1091500.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top center;
+  animation: backgroundColorChange 20s infinite;
+}
+
+@keyframes backgroundColorChange {
+  0% { background-color: rgba(0, 0, 0, 0.3); }
+  25% { background-color: rgba(18, 52, 86, 0.3); }
+  50% { background-color: rgba(34, 34, 34, 0.3); }
+  75% { background-color: rgba(86, 18, 52, 0.3); }
+  100% { background-color: rgba(0, 0, 0, 0.3); }
+}
+
+.app-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 15px 15px;
+}
+
+header input {
+  width: 100%;
+  max-width: 280px;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  background-color: rgba(18, 18, 18, 0.4);
+  border-radius: 16px;
+  border-bottom: 3px solid #df8e00;
+  font-size: 20px;
+  font-weight: 300;
+  transition: 0.2s ease-out;
+  color: #eeeeee;
+  animation: inputPulse 2s infinite;
+}
+
+@keyframes inputPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+header input:focus {
+  background-color: rgba(18, 18, 18, 0.8);
+}
+
+main {
+  flex: 1 1 100%;
+  padding: 25px 25px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.location .city {
+  color: #eeeeee;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  animation: colorChange 3s infinite alternate;
+}
+
+.location .date {
+  color: #eeeeee;
+  font-size: 16px;
+}
+
+.current .temp {
+  color: var(--temp-color, #eeeeee);
+  font-size: 102px;
+  font-weight: 900;
+  margin: 30px 0;
+  text-shadow: 2px 8px rgba(0, 0, 0, 0.5);
+  animation: tempColorChange 3s infinite alternate, bounce 3s infinite;
+}
+
+@keyframes tempColorChange {
+  0% { color: var(--temp-color-start, #eeeeee); }
+  100% { color: #ffffff; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.current .temp span {
+  font-weight: 200;
+}
+
+.current .weather {
+  color: #eeeeee;
+  font-size: 32px;
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 15px;
+  text-shadow: 0 3px rgba(0, 0, 0, 0.4);
+  animation: bounce 3s infinite;
+}
+
+.current .hi-low {
+  color: #eeeeee;
+  font-size: 24px;
+  font-weight: 500;
+  text-shadow: 0 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Media Queries */
+
+/* Tablets and below */
+@media (max-width: 768px) {
   header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 15px 15px;
-  }
-  
-  header input {
-    width: 100%;
-    max-width: 280px;
-    padding: 10px 15px;
-    border: none;
-    outline: none;
-    background-color: rgba(18, 18, 18, 0.4);
-    border-radius: 16px;
-    border-bottom: 3px solid #df8e00;
-    font-size: 20px;
-    font-weight: 300;
-    transition: 0.2s ease-out;
-    color: #eeeeee;
-  }
-  
-  header input:focus {
-    background-color: rgba(18, 18, 18, 0.8);
-  }
-  
-  main {
-    flex: 1 1 100%;
-    padding: 25px 25px 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .location .city {
-    color: #eeeeee;
-    font-size: 32px;
-    font-weight: 500;
-    margin-bottom: 5px;
-  }
-  
-  .location .date {
-    color: #eeeeee;
-    font-size: 16px;
-  }
-  
-  .current .temp {
-    color: #eeeeee;
-    font-size: 102px;
-    font-weight: 900;
-    margin: 30px 0;
-    text-shadow: 2px 8px rgba(0, 0, 0, 0.5);
-  }
-  
-  .current .temp span {
-    font-weight: 200;
-  }
-  
-  .current .weather {
-    color: #eeeeee;
-    font-size: 32px;
-    font-weight: 700;
-    font-style: italic;
-    margin-bottom: 15px;
-    text-shadow: 0 3px rgba(0, 0, 0, 0.4);
-  }
-  
-  .current .hi-low {
-    color: #eeeeee;
-    font-size: 24px;
-    font-weight: 500;
-    text-shadow: 0 3px rgba(0, 0, 0, 0.4);
-  }
-  
-  /* Media Queries */
-  
-  /* Tablets and below */
-  @media (max-width: 768px) {
-    header {
       padding: 40px 15px 10px;
-    }
-  
-    header input {
+  }
+
+  header input {
       max-width: 240px;
       font-size: 18px;
-    }
-  
-    main {
-      padding: 20px 20px 40px;
-    }
-  
-    .location .city {
-      font-size: 28px;
-    }
-  
-    .location .date {
-      font-size: 14px;
-    }
-  
-    .current .temp {
-      font-size: 80px;
-    }
-  
-    .current .weather {
-      font-size: 28px;
-    }
-  
-    .current .hi-low {
-      font-size: 20px;
-    }
   }
-  
-  /* Mobile phones */
-  @media (max-width: 480px) {
-    header {
+
+  main {
+      padding: 20px 20px 40px;
+  }
+
+  .location .city {
+      font-size: 28px;
+  }
+
+  .location .date {
+      font-size: 14px;
+  }
+
+  .current .temp {
+      font-size: 80px;
+  }
+
+  .current .weather {
+      font-size: 28px;
+  }
+
+  .current .hi-low {
+      font-size: 20px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  header {
       padding: 30px 10px 5px;
-    }
-  
-    header input {
+  }
+
+  header input {
       max-width: 200px;
       font-size: 16px;
-    }
-  
-    main {
+  }
+
+  main {
       padding: 15px 15px 30px;
-    }
-  
-    .location .city {
+  }
+
+  .location .city {
       font-size: 24px;
-    }
-  
-    .location .date {
+  }
+
+  .location .date {
       font-size: 12px;
-    }
-  
-    .current .temp {
+  }
+
+  .current .temp {
       font-size: 60px;
-    }
-  
-    .current .weather {
+  }
+
+  .current .weather {
       font-size: 24px;
-    }
-  
-    .current .hi-low {
+  }
+
+  .current .hi-low {
       font-size: 18px;
-    }
-  }  
+  }
+}
